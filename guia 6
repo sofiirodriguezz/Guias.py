@@ -1,0 +1,247 @@
+#Practica 6
+
+import math
+
+
+def imprimir_hola_mundo() : 
+    print("Hola Mundo!") 
+
+#imprimir_hola_mundo()
+
+def imprimir_un_verso() :
+    print("Nina bonita \n Que vas a hacer? Nos vemo ahorita \n Llegaste rota y yo te cuide")
+
+#imprimir_un_verso()
+
+def factorial_2() -> int : 
+    print(2)
+
+#factorial_2()
+
+def raizDe2() -> float :
+    return round(math.sqrt(2),4)
+
+#print(raizDe2())
+
+def perimetro() -> float :
+    return 2*math.pi
+
+#print(perimetro())
+
+def imprimir_saludo(nombre:str) :
+    print("Hola", nombre)
+
+#imprimir_saludo("Sofia")
+
+def raiz_cuadrada_de(n:int) -> float :
+    return math.sqrt(n) 
+
+#print(raiz_cuadrada_de(80))
+
+def fahrenheit_a_celsius(t:float) -> float :
+    return ((t-32)*5)/9
+
+#print(fahrenheit_a_celsius(80))
+
+def imprimir_dos_veces(estribillo:str) :
+    print(estribillo, estribillo)
+
+#imprimir_dos_veces("Hola don pepito, como te va.")
+
+def es_multiplo_de (n:int,m:int) -> bool :
+    res = n%m == 0
+    return res 
+
+#print(es_multiplo_de (4,2))
+#print(es_multiplo_de(5,2))
+
+def es_par(numero:int) -> bool :
+    res = es_multiplo_de (numero,2)
+    return res 
+
+#print(es_par(8))
+#print(es_par(3))
+
+def cantidad_de_pizzas(comensales:int, min_cant_de_porciones:int) -> int :
+    res = round((comensales*min_cant_de_porciones)/ 8)
+    return res 
+
+#print(cantidad_de_pizzas(10,3))
+
+def alguno_es_0(numero1:int,numero2:int) -> bool :
+    res = numero1 == 0 or numero2 == 0
+    return res 
+
+#print(alguno_es_0(2,0))
+
+def ambos_son_0(numero1:int,numero2:int) -> bool :
+    res = numero1 == 0 and numero2 == 0
+    return res 
+
+#print(ambos_son_0(0,0))
+#print(ambos_son_0(3,2))
+
+def es_nombre_largo(nombre:str) -> bool :
+    res = len (nombre) >= 3 and len(nombre) <= 8
+    return res
+
+#print(es_nombre_largo("Juan"))
+#print(es_nombre_largo("Anastasia"))
+
+def es_bisiesto(ano:int) -> bool : 
+    res = (ano%400 == 0) or (ano%4 == 0 and not (ano%100 == 0))
+    return res 
+
+#print(es_bisiesto(2012))
+#print(es_bisiesto(2014))
+
+def peso_pino(altura:int) -> int :
+    if altura <= 3 :
+        res = 3*altura*100
+    else :
+        res = 900 + 2*(altura-3)*100 
+    return res 
+
+#print(peso_pino(5))
+#print(peso_pino(2))
+
+def es_peso_util(peso: int) -> bool :
+    res = (peso > 400) and (peso < 1000)
+    return res
+
+#print(es_peso_util(300))
+#print(es_peso_util(600))
+
+def sirve_pino(altura:int) -> bool :
+    res: bool = es_peso_util(peso_pino(altura))
+    return res 
+
+#print(sirve_pino(2))
+#print(sirve_pino(1))
+
+def devolver_el_doble_si_es_par(numero:int) -> int :
+    if (numero%2==0):
+        res:int = 2*numero
+    else:
+        res:int = numero
+    return res 
+
+#print(devolver_el_doble_si_es_par(6))
+#print(devolver_el_doble_si_es_par(9))
+
+def delvover_valor_si_es_par_sino_siguiente(numero:int) -> int :
+    if (numero%2==0):
+        res:int = numero
+    else:
+        res:int = numero + 1
+    return res  
+
+#print(delvover_valor_si_es_par_sino_siguiente(7))
+#print(delvover_valor_si_es_par_sino_siguiente(4))
+
+def devolver(numero:int) -> int :
+    if (numero%9==0):
+        res= numero*3
+    if (numero%3==0):
+        res= numero*2
+    else:
+        res= numero
+    return res 
+
+#print(devolver(9))
+#print(devolver(6))
+
+def lindo_nombre(nombre:str) :
+    if len(nombre) >= 5:
+        res = print("Tu nombre tiene muchas letras")
+    else:
+        res= print("Tu nombre tiene menos de 5 caracteres")
+    
+#lindo_nombre("Sofia") 
+#lindo_nombre("Sol")  
+
+def elRango(numero:int) :
+    if numero<5 :
+        print("Menor a 5")
+    if numero >= 10 and 20 >= numero :
+        print("Entre 10 y 20")
+    if numero > 20:
+        print("Mayor a 20")
+
+#elRango(4)
+#elRango(14)
+#elRango(26)
+
+def depende_estado(sexo:str,edad:int) :
+    if (edad < 18) or (sexo== "F" and edad >= 60) or (sexo=="M" and edad >= 65) :
+        print ("Anda de vacaciones")
+    else:
+        print("Te toca trabajar")
+
+#depende_estado("F",70)
+#depende_estado(None,15)
+#depende_estado("M",50)
+
+def hasta10() :
+    x = 1 
+    while x < 11:
+        print(x)
+        x+=1
+
+#hasta10() 
+
+def entre10_y_40() :
+    x = 10
+    while x < 41:
+        print(x)
+        x+=2
+
+#entre10_y_40()
+
+def eco10() :
+    x = 1 
+    while x < 11 :
+        print("eco")
+        x+=1 
+
+#eco10() 
+
+def cuenta_regresiva(n:int) :
+    while n>0 :
+        print(n)
+        n-=1 
+    print("Despegue")
+
+#cuenta_regresiva(10)   
+
+def viaje_en_el_tiempo(partida:int,llegada:int) :
+    while partida > llegada:
+        print("Viajo un ano al pasado, estamos en el ano",partida)
+        partida -=1
+
+#viaje_en_el_tiempo(300,290)
+
+def al10() :
+    for n in range (1,11,1):
+        print(n)
+
+#al10()
+
+def entre_1040():
+    for n in range (10,41,2):
+        print(n)
+
+#entre_1040() 
+
+def eco_10() :
+    for x in range (1,11,1):
+        print("eco")
+
+#eco_10() 
+
+def cuenta_regresiva1(n:int) :
+    for n in range (n,0,-1) :
+        print(n)
+    print("Despegue")
+
+#cuenta_regresiva1(5) 
