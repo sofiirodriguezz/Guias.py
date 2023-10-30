@@ -275,12 +275,12 @@ def monederoElectronico() -> list:       #hay que arreglarlo porque da error
     operacion:str = input("Eliga la operacion:")
     while operacion != "X":
         if operacion == "C":
-            monto: int = input("Monto:")
+            monto = int(input("Monto:"))
             saldo += monto
             res.append(operacion, saldo)
         else :
             if operacion == "D":
-                monto:int = input("Monto:")
+                monto=int(input("Monto:"))
                 saldo -= monto 
                 res.append(operacion,saldo)
     return res 
