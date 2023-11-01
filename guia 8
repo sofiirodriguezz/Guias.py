@@ -1,0 +1,201 @@
+from queue import LifoQueue as Pila 
+import random
+
+def generar_nros_al_azar(n:int, desde:int, hasta:int) -> Pila :
+    p:Pila = Pila()
+    while p.qsize() <= n  : 
+        p.put(random.randint(desde,hasta))
+         
+    return p 
+
+
+
+def cantidad_elementos(p:Pila) -> int:
+    pilaReves: Pila = Pila()
+    res:int = 0
+    while not p.empty():
+        elemento= p.get()
+        pilaReves.put(elemento)
+        res += 1 
+    while not pilaReves.empty():
+        elemento= pilaReves.get()
+        p.put(elemento)
+
+    return res 
+
+pila:Pila = Pila()
+pila.put(1)
+pila.put(8)
+pila.put(4)
+pila.put(3)
+#print(cantidad_elementos(pila))
+#print(list(pila.queue))
+
+def buscar_el_maximo(p:Pila) -> int :
+    res:int = 0
+    p2:Pila = Pila()
+    while not p.empty():
+        elem:int = p.get()
+        p2.put(elem)
+        if elem > res :
+            res = elem
+       
+    while not p2.empty():
+        elem:int = p2.get()
+        p.put(elem)
+
+    return res 
+
+p: Pila = Pila()
+p.put(9)
+p.put(6)
+p.put(4)
+#print(buscar_el_maximo(p))
+#print(list(p.queue))
+
+from queue import Queue as Cola 
+
+def generar_numeros_al_azar2(n:int,desde:int,hasta:int) -> Cola:
+    c: Cola = Cola()
+    while c.qsize() <= n :
+        c.put(random.randint(desde,hasta))
+    return c 
+
+#print(list(generar_nros_al_azar(8,1,9).queue))
+
+def cantidad_elementos2(c:Cola) -> int:
+    c2:Cola = Cola()
+    res:int = 0
+    while not c.empty():
+        elem:int = c.get()
+        c2.put(elem)
+        res += 1 
+    while not c2.empty():
+        elem:int = c2.get()
+        c.put(elem)
+    return res 
+
+c:Cola = Cola()
+c.put(1)
+c.put(3)
+c.put(7)
+c.put(9)
+#print(list(c.queue))
+#print(cantidad_elementos2(c))
+#print(list(c.queue))
+
+def maximoCola(c:Cola) -> int:
+    res: int = 0
+    c2:Cola=Cola()
+    while not c.empty():
+        elem:int= c.get()
+        c2.put(elem)
+        if elem > res :
+            res = elem
+    while not c2.empty:
+        elem= c2.get()
+        c.put(elem)
+    return res 
+
+c2:Cola = Cola()
+c2.put(5)
+c2.put(9)
+c2.put(2)
+c2.put(4)
+#print(maximoCola(c2))
+
+def armar_secuencia_de_bingo() -> Cola :
+    c:Cola=Cola()
+    while c.qsize() < 12:
+        c.put(random.randint(0,99))
+    return c 
+
+#rint(list(armar_secuencia_de_bingo().queue))
+
+def jugar_carton_bingo(carton:list, bolillero:Cola) -> int:
+    jugadas:int = 0
+    casillas_completadas:int = 0
+    bolilleroAux: Cola= Cola()
+    while not bolillero.empty():
+        bola:int = bolillero.get()
+        jugadas +=1 
+        if bola in carton:
+            casillas_completadas +=1
+        if casillas_completadas == len(carton):
+            return jugadas
+    while not bolilleroAux.empty():
+        bola:int = bolilleroAux.get()
+        bolillero.put(bola)
+
+def agrupar_por_longitud(nombre_archivo:str) -> dict:
+    archivo = open(nombre_archivo,"r")
+    res:dict = {}
+    for linea in archivo.readlines():
+        palabras = linea.split()
+        for palabra in palabras:
+            clave = len(palabra)
+            if clave in d :
+                res[clave] = res[clave] + 1 
+            else :
+                res[clave] = 1
+    archivo.close()
+    return res 
+
+#print(agrupar_por_longitud("archivo_palabras.txt"))
+
+def evaluar_expresion(s:str) -> int :
+    p:Pila = Pila()
+    operaciones = ["+","-","*","/"]
+    token = s.split()
+    for i in token :
+        if i not in operaciones :
+            i= int(i)
+            p.put(i)
+        else :
+            n2 = p.get()
+            n1 = p.get()
+            if i == "+":
+                res = n1 + n2 
+            if i == "-" :
+                res = n1 - n2 
+            if i == "/":
+                res = (n1 / n2)
+            if i == "*" :
+                res =(n1*n2)
+            p.put(res)
+    return res 
+
+expresion = "3 4 + 5 * 2 -"
+resultado = evaluar_expresion(expresion)
+#print(resultado)    
+
+
+def historiales(nombres:list) -> dict :
+    res:dict = {}
+    for i in nombres :
+        if i not in res :
+            res[i] = Pila()
+    return res 
+
+#print(historiales(["sofia","julia","emilia"]))
+
+def n_pacientes_urgentes(c:Cola) -> int :
+    c1:Cola = Cola()
+    res:int = 0
+    while not c.empty():
+        paciente= c.get()
+        c1.put(paciente)
+        if paciente[0] <= 3 :
+            res += 1 
+    while not c1.empty():
+        paciente = c1.get()
+        c.put(paciente)
+    return res 
+
+pac:Cola = Cola()
+pac.put([4,"juan","c"])
+pac.put([2,"meli","f"])
+pac.put([6,"popi","p"])
+pac.put([1,"ju","k"])
+#print(n_pacientes_urgentes(pac))
+#print(list(pac.queue))
